@@ -14,13 +14,19 @@ import tempfile
 import configparser
 os.environ['MPLCONFIGDIR'] = tempfile.mkdtemp()
 from IPython.display import HTML
-
+import json as json
 
 app = Flask(__name__)
 config = configparser.ConfigParser()
 config.read('env/app.config')
 BEARER_TOKEN = config['SECRETS']['GITHUB_PAT']
-print("GITHUB_TOKEN"+BEARER_TOKEN)
+
+repo_owner = config['REPOSITORY']['OWNER']
+repo_name = config['REPOSITORY']['REPO_NAME']
+repo_environments = config['REPOSITORY']['ENVIRONMENT'].split(',')
+
+print(repo_environments)
+print(type(repo_environments))
 
 _transport = RequestsHTTPTransport(
     url='https://api.github.com/graphql',
@@ -59,12 +65,9 @@ query = gql("""
 """)
 
 params = {
-    'owner': 'poc-itau',
-    'repo_name': 'ReadingTimeDemo',
-    'environment': ['Review AWS', 'Review Azure', 'production']
-    # "owner" : "octodemo",
-    # "repo_name": "ReadingTimeDemo", 
-    # "environment": ["development", "review", "github-pages", "production"]
+    'owner': repo_owner,
+    'repo_name': repo_name,
+    'environment': repo_environments
 }
 
 repository = client.execute(query, variable_values=params)["repository"]
