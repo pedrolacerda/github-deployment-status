@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitHub Deployments Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+  </head>
+  <body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul id="messages" class="list_unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="page-header">
+            <h1>{{ title }}: {{total_deployments }}</h1>
+        </div>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>PENDING</th>
+                        <th>SUCCESS</th>
+                        <th>FAILURE</th>
+                        <th>INACTIVE</th>
+                        <th>ERROR</th>
+                        <th>QUEUED</th>
+                        <th>IN_PROGRESS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ status["PENDING"] }}</td>
+                        <td>{{ status["SUCCESS"] }}</td>
+                        <td>{{ status["FAILURE"] }}</td>
+                        <td>{{ status["INACTIVE"] }}</td>
+                        <td>{{ status["ERROR"] }}</td>
+                        <td>{{ status["QUEUED"] }}</td>
+                        <td>{{ status["IN_PROGRESS"] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+                {% include 'chart.html' %}
+        </div>
+    </div>
+</body>
+</html>
