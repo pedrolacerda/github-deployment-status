@@ -15,4 +15,4 @@ REPO_NAME = repo_name
 ENVIRONMENT = env1,env2,env3
 ```
 
-You can just rename and edit the `app.config.example` file in the root of this repo.
+You can just rename and edit the [`app.config.example`](https://github.com/pedrolacerda/github-deployment-status/blob/master/app.config.exemple) file in the root of this repo.
