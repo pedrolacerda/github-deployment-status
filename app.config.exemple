@@ -1,0 +1,7 @@
+[SECRETS]
+GITHUB_PAT = secret
+
+[REPOSITORY]
+OWNER = org_or_username
+REPO_NAME = repo_name
+ENVIRONMENT = env1,env2,env3
