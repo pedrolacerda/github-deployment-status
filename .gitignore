@@ -1,21 +1,5 @@
-Skip to content
-  queue-prep-train-55c40e29-081e215-7db8dee-8c36d2b Switch to  Rails 6.0.0.3a6c14d06b
-Search or jump to…
+.DS_Store
 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@pedrolacerda 
-1
-00pedrolacerda/deployment-status
- Code Issues 0 Pull requests 0 Actions Projects 0 Wiki Security Insights Settings
-deployment-status/.gitignore
-@pedrolacerda pedrolacerda Initial commit
-160514b now
-129 lines (105 sloc)  1.76 KB
-  
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
